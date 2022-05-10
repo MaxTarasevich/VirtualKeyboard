@@ -223,33 +223,33 @@ function virtualKeyBoard(keyArr){
     
     
     document.addEventListener('keydown',(e)=>{
-      
-        if(e.key == 'CapsLock'){
-            capsLock.classList.toggle('active')
-            if(capsLock.classList.contains('active')){
-               keys.forEach((i)=>{
-                   if(i.textContent.length == 1){
-                   i.textContent =  i.textContent.toUpperCase()
-                   }
-               })
-            }else{
-                keys.forEach((i)=>{
-                    if(i.textContent.length == 1){
-                        i.textContent = i.textContent.toLowerCase()
-                    }
-                })
-            }
-        }else{
-            keys.forEach((el)=>{
-                if(el.textContent == e.key){
-                    el.classList.add('active')
+      if(e.key == 'CapsLock'){
+          console.log(e.key)
+        capsLock.classList.toggle('active')
+        if(capsLock.classList.contains('active')){
+            keys.forEach((i)=>{
+                if(i.textContent.length == 1){
+                i.textContent =  i.textContent.toUpperCase()
                 }
             })
-        }
-       
+         }else{
+             keys.forEach((i)=>{
+                 if(i.textContent.length == 1){
+                     i.textContent = i.textContent.toLowerCase()
+                 }
+             })
+         }
+      }else{
+        keys.forEach((el)=>{
+            if(el.textContent == e.key){
+                el.classList.add('active')
+            }
+        })
+      }
     })
     
     document.addEventListener('keyup',(e)=>{
+        if(e.key !== 'CapsLock'){
             keys.forEach((el)=>{
            
                 if(el.textContent == e.key){
@@ -259,6 +259,8 @@ function virtualKeyBoard(keyArr){
                    
                 }
             })
+        }
+         
     })
     
     function createKeyboard(arr){
